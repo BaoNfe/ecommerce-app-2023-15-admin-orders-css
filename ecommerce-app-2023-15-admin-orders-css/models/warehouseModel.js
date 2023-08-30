@@ -6,27 +6,26 @@ const warehouseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    address: {
-      province: {
-        type: String,
-        required: true,
-      },
-      city: {
-        type: String,
-        required: true,
-      },
-      district: {
-        type: String,
-        required: true,
-      },
-      street: {
-        type: String,
-        required: true,
-      },
-      number: {
-        type: String,
-        required: true,
-      },
+
+    province: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    district: {
+      type: String,
+      required: true,
+    },
+    street: {
+      type: String,
+      required: true,
+    },
+    number: {
+      type: String,
+      required: true,
     },
     totalAreaVolume: {
       type: Number,
