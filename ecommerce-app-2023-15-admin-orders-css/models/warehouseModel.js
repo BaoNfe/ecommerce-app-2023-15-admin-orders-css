@@ -36,4 +36,4 @@ const warehouseSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("warehouse", warehouseSchema)
+export default mongoose.model("test", warehouseSchema)

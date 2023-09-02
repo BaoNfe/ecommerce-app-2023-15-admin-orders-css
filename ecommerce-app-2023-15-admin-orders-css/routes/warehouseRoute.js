@@ -22,7 +22,7 @@ router.post(
 );
 
 router.put(
-    "/update-warehouse/:name",
+    "/update-warehouse/:pid",
     requireSignIn,
     isAdmin,
     formidable(),
@@ -35,7 +35,7 @@ router.get("/get-warehouse/:slug", getWareHouseController)
 
 router.post("/warehouse-filter", warehousesFiltersController)
 
-router.delete("/delete-product/:name", deleteWarehouseController)
+router.delete("/delete-product/:pid", deleteWarehouseController)
 
 router.get("/sreach-warehouse/:keyword", searchWarehouseController)
 

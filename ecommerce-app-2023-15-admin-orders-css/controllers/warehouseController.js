@@ -8,8 +8,8 @@ dotenv.config();
 
 export const createWareHouseController = async (req, res) => {
     try {
-        const { name, address, province, city, district, street, number, totalAreaVolume} = 
-        res.fields;
+      const { name, address, province, city, district, street, number, totalAreaVolume} = 
+        req.fields;
 
         switch(true) {
             case !name:
@@ -38,6 +38,7 @@ export const createWareHouseController = async (req, res) => {
         })
     } catch (error) {
         console.log(error);
+        console.log(req.fields);
         res.status(500).send({
             success: false,
             error,
@@ -54,7 +55,7 @@ export const getWareHousesController = async (req, res) => {
         .sort({ createdAt: -1 });
       res.status(200).send({
         success: true,
-        counTotal: warehouse.length,
+        counTotal: warehouses.length,
         message: "all warehouse ",
         warehouses,
       });
@@ -116,7 +117,7 @@ export const getWareHousesController = async (req, res) => {
             {new: true }
         )
 
-        await warehouse.save();
+        await warehouses.save();
         res.status(201).send({
             success:true,
             message: "update warehouse successfully",

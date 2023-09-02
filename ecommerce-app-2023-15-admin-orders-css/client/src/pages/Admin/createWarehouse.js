@@ -15,7 +15,8 @@ const CreateWarehouse = () => {
     const [street, setStreet] = useState("");
     const [number, setNumber] = useState("");
     const [totalAreaVolume, setTotalArea] = useState("");
-    const handleCreate = async (e) => {
+
+    const handlewarehouseCreate = async (e) => {
         e.preventDefault();
         try {
             const warehouseData = new FormData();
@@ -34,7 +35,7 @@ const CreateWarehouse = () => {
                 toast.error(data?.message);
             } else {
                 toast.success("warehouse Created Successfully");
-                navigate("/dashboard/admin/warehouses");
+                navigate("/dashboard/admin/warehouse");
             }
         } catch (error) {
             console.log(error);
@@ -117,7 +118,7 @@ const CreateWarehouse = () => {
                                 />
                             </div>
                             <div className="mb-3">
-                                <button className="btn btn-primary" onClick={handleCreate}>
+                                <button className="btn btn-primary" onClick={handlewarehouseCreate}>
                                     CREATE warehouse
                                 </button>
                             </div>
