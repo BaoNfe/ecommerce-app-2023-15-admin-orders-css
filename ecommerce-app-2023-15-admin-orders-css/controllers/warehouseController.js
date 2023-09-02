@@ -8,14 +8,16 @@ dotenv.config();
 
 export const createWareHouseController = async (req, res) => {
     try {
+<<<<<<< HEAD
       const { name, address, province, city, district, street, number, totalAreaVolume} = 
+=======
+        const { name, province, city, district, street, number, totalAreaVolume} = 
+>>>>>>> 0e3d77d74af873c5f7dae974fc63b7c157d47d3e
         req.fields;
 
         switch(true) {
             case !name:
                 return res.status(500).send({error: "name is require"})
-            case !address:
-                return res.status(500).send({error: "address is require"})
             case !province:
                 return res.status(500).send({error: "province is require"})
             case !city:
@@ -95,8 +97,6 @@ export const getWareHousesController = async (req, res) => {
         switch(true) {
             case !name:
                 return res.status(500).send({error: "name is require"})
-            case !address:
-                return res.status(500).send({error: "address is require"})
             case !province:
                 return res.status(500).send({error: "province is require"})
             case !city:

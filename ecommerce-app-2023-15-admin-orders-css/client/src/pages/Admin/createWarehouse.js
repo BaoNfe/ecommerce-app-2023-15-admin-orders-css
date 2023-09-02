@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreateWarehouse = () => {
     const navigate = useNavigate();
+    const [warehouse, setWarehouse] = useState("");
     const [name, setName] = useState("");
     const [province, setProvince] = useState("");
     const [city, setCity] = useState("");
@@ -20,28 +21,46 @@ const CreateWarehouse = () => {
         e.preventDefault();
         try {
             const warehouseData = new FormData();
-            warehouseData.append("name", name);
-            warehouseData.append("totalArea", totalAreaVolume);
+            warehouseData.append("name", name);      
             warehouseData.append("province", province);
             warehouseData.append("city", city);
             warehouseData.append("district", district);
             warehouseData.append("street", street);
             warehouseData.append("number", number);
+            warehouseData.append("totalAreaVolume", totalAreaVolume);
             const { data } = axios.post(
                 "/api/v1/warehouse/create-warehouse",
                 warehouseData
             );
             if (data?.success) {
                 toast.error(data?.message);
+                console.log(data)
             } else {
                 toast.success("warehouse Created Successfully");
+<<<<<<< HEAD
                 navigate("/dashboard/admin/warehouse");
+=======
+>>>>>>> 0e3d77d74af873c5f7dae974fc63b7c157d47d3e
             }
         } catch (error) {
             console.log(error);
             toast.error("something went wrong");
         }
     };
+
+    const getAllWarehouse = async () => {
+        try {
+          const { data } = await axios.get("/api/v1/warehouse/get-warehouse");
+          setWarehouse(data.warehouse);
+        } catch (error) {
+          console.log(error);
+          toast.error("Someething Went Wrong");
+        }
+      };
+
+    useEffect(() => {
+        getAllWarehouse();
+    }, [])
 
     return (
         <Layout title={"Dashboard - Create warehouse"}>
@@ -110,7 +129,7 @@ const CreateWarehouse = () => {
                             </div>
                             <div className="mb-3">
                                 <input
-                                    type="number"
+                                    type="text"
                                     value={totalAreaVolume}
                                     placeholder="write a total area"
                                     className="form-control"
